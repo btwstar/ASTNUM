@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <!-- Arabic widget labels (the launcher shows these on Arabic-locale
+         phones; content itself is pushed from the app in the app's language). -->
+    <string name="widget_calories_name">أستنُم — سعرات اليوم</string>
+    <string name="widget_calories_desc">حلقة تقدم السعرات مع النسبة</string>
+    <string name="widget_carb_name">أستنُم — كارب اليوم</string>
+    <string name="widget_carb_desc">حلقة تقدم الكارب مع النسبة</string>
+    <string name="widget_protein_name">أستنُم — بروتين اليوم</string>
+    <string name="widget_protein_desc">حلقة تقدم البروتين مع النسبة</string>
+    <string name="widget_fat_name">أستنُم — دهون اليوم</string>
+    <string name="widget_fat_desc">حلقة تقدم الدهون مع النسبة</string>
+    <string name="widget_meals_name">أستنُم — وجبات اليوم</string>
+    <string name="widget_meals_desc">الوجبات الأربع بسعراتها وتفاصيلها ونسبة الإكمال</string>
+    <string name="widget_tasks_name">أستنُم — مهام اليوم</string>
+    <string name="widget_tasks_desc">قائمة مهام اليوم مع حالتها</string>
+    <string name="widget_taskflip_name">أستنُم — مهمة اليوم</string>
+    <string name="widget_taskflip_desc">مربع صغير — اقلبها بالضغط لعرض المهام الأخرى</string>
+    <string name="widget_habits_name">أستنُم — عادات اليوم</string>
+    <string name="widget_habits_desc">عادات اليوم أمامك — سجّلها بلمسة من الودجة</string>
+    <string name="widget_habitflip_name">أستنُم — عادة اليوم</string>
+    <string name="widget_habitflip_desc">مربع صغير — اقلبها بالضغط لعرض العادات الأخرى</string>
+    <string name="widget_muscles_name">أستنُم — حرارة العضلات</string>
+    <string name="widget_muscles_desc">خريطة حرارة جسمك كما في التطبيق</string>
+    <string name="widget_sessions_name">أستنُم — جلسات التمرين</string>
+    <string name="widget_sessions_desc">جداولك حسب أيامك المخصصة — ابدأ بلمسة</string>
+    <string name="widget_active_name">أستنُم — الجلسة الجارية</string>
+    <string name="widget_active_desc">مؤقت حي مع التمرين الحالي وتسجيل مجموعة بلمسة</string>
+    <string name="widget_percent_name">أستنُم — نِسَب اليوم</string>
+    <string name="widget_percent_desc">كل النسب المئوية في قائمة واحدة</string>
+    <string name="widget_quickadd_name">أستنُم — إضافة سريعة</string>
+    <string name="widget_quickadd_desc">ابدأ عادة جديدة أو ملاحظة جديدة بلمسة واحدة</string>
+    <string name="widget_pin_name">أستنُم — عنصر مثبّت</string>
+    <string name="widget_pin_desc">اعرض عادة أو جلسة تمرين أو ملاحظة واحدة تختارها بشكل دائم</string>
+    <string name="widget_events_name">أستنُم — الأحداث القادمة</string>
+    <string name="widget_events_desc">ما هو قادم هذا الأسبوع — الجلسات والمهام مع أيامها</string>
+    <string name="widget_calendar_name">أستنُم — تقويم الشهر</string>
+    <string name="widget_calendar_desc">شهرُك بنظرة واحدة — اضغط أي يوم لمهامه وملاحظاته</string>
+</resources>

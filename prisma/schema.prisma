@@ -1,0 +1,343 @@
+// ASTNUM — Unified Habit + Notes + Gym tracker
+// SQLite schema (mirrors the native app schema 1:1 for future Capacitor + SQLite sync)
+// Conventions:
+//  - All PKs are UUID strings (crypto.randomUUID()).
+//  - Day fields: "YYYY-MM-DD" strings (local dates). Timestamps: ISO-8601 strings.
+//  - Soft deletes via deletedAt where full trash/undo semantics are needed.
+//  - No formal FK relations: local-first app, explicit joins keep migration + sync simple.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────── HABITS ───────────────────────────
+
+model Habits {
+  id           String   @id
+  name         String
+  icon         String   @default("✅")
+  color        String   @default("#34d399")
+  // JSON: { "type": "daily" } | { "type": "weekdays", "days": [0..6] } | { "type": "timesPerWeek", "times": 3 }
+  // | { "type": "gymPlan" } — linked workout rotation (see gymTemplateId)
+  scheduleJson String   @default("{\"type\":\"daily\"}")
+  // when set: this habit mirrors a gym workout template (schedule = gymPlan).
+  // Finishing a session of that template auto-completes the habit; the
+  // linked workouts rotate with automatic postponement until completed.
+  gymTemplateId String?
+  reminderTime String? // "HH:MM" local time, null = no reminder
+  note         String?
+  sortOrder    Int      @default(0)
+  archived     Boolean  @default(false)
+  deletedAt    String?
+  createdAt    String
+  updatedAt    String
+
+  @@index([archived, sortOrder])
+}
+
+model HabitLogs {
+  id        String  @id
+  habitId   String
+  date      String // YYYY-MM-DD (habit owner's local date)
+  done      Boolean @default(true)
+  updatedAt String
+
+  @@unique([habitId, date])
+  @@index([date])
+}
+
+model StreakFreezes {
+  id        String @id
+  habitId   String
+  date      String // YYYY-MM-DD the freeze protects
+  updatedAt String
+
+  @@unique([habitId, date])
+  @@index([date])
+}
+
+// ─────────────────────── NOTES & TASKS ───────────────────────
+
+model Notes {
+  id        String  @id
+  title     String  @default("")
+  body      String  @default("")
+  pinned    Boolean @default(false)
+  archived  Boolean @default(false)
+  deletedAt String? // set = in trash (purged after 30 days)
+  // Optional attached image as paired data URLs, canvas-compressed client-side:
+  //  image      — full size (≤1280px JPEG, cap ~500KB) returned by the DETAIL route
+  //  imageThumb — list thumbnail (≤320px JPEG, cap ~48KB) returned by LIST routes
+  // Lists never carry the full image (payload discipline for mobile + offline).
+  image     String?
+  imageThumb String?
+  createdAt String
+  updatedAt String
+
+  @@index([deletedAt, pinned, updatedAt])
+}
+
+model Tasks {
+  id         String  @id
+  noteId     String? // optional: task lives inside a note's checklist
+  title      String
+  dueAt      String? // ISO-8601
+  priority   Int     @default(2) // 0 = high, 1 = medium, 2 = low, 3 = none
+  done       Boolean @default(false)
+  doneAt     String?
+  // JSON: { "type": "none" | "daily" | "weekly" | "weekdays", "days"?: [0..6] }
+  repeatRule String  @default("{\"type\":\"none\"}")
+  sortOrder  Int     @default(0)
+  deletedAt  String?
+  createdAt  String
+  updatedAt  String
+
+  @@index([done, dueAt])
+  @@index([noteId])
+}
+
+model Tags {
+  id        String @id
+  name      String
+  updatedAt String
+
+  @@unique([name])
+}
+
+model NoteTags {
+  noteId String
+  tagId  String
+
+  @@id([noteId, tagId])
+  @@index([tagId])
+}
+
+// ─────────────────────────── GYM ──────────────────────────────
+
+model Exercises {
+  id        String  @id
+  nameAr    String
+  nameEn    String
+  equipment String  @default("none") // barbell|dumbbell|machine|cable|bodyweight|kettlebell|band|other|none
+  custom    Boolean @default(false)
+  // Exercise-form media as data URLs (canvas-compressed client-side):
+  //  image      — full media (image/* or animated GIF, or video/mp4|webm)
+  //  imageThumb — list thumbnail (small image/* JPEG) — lists carry ONLY this
+  deletedAt String?
+  // A null thumb with a present image is legal (video whose frame-grab
+  // failed → the list renders a play-badge placeholder instead).
+  image     String?
+  imageThumb String?
+  createdAt String
+  updatedAt String
+
+  @@index([equipment])
+}
+
+model MuscleGroups {
+  id            String @id
+  nameAr        String
+  nameEn        String
+  svgId         String // fixed SVG path id: chest, front_delts, side_delts, ...
+  region        String // front | back
+  weeklyTarget  Int    @default(12) // target working sets / week (editable)
+  sortOrder     Int    @default(0)
+  updatedAt     String
+}
+
+model ExerciseMuscles {
+  exerciseId String
+  muscleId   String
+  role       String // primary | secondary
+  weight     Float  // primary = 1.0, secondary = 0.5
+
+  @@id([exerciseId, muscleId])
+  @@index([muscleId])
+}
+
+model WorkoutTemplates {
+  id          String  @id
+  name        String
+  description String?
+  // Smart scheduling (v1.17): JSON array of weekday ints 0=Sunday..6=Saturday
+  // the template is dedicated to; null/[] = any day ("جدول اليوم" ignores it)
+  daysJson    String?
+  // Deferred-exercise carry (v1.17): JSON array of exerciseIds postponed from
+  // the last session of this template — PREPENDED to the next session until
+  // the exercise is actually performed ("تأجيل" semantics).
+  carryJson   String?
+  deletedAt   String?
+  createdAt   String
+  updatedAt   String
+}
+
+model TemplateExercises {
+  id         String @id
+  templateId String
+  exerciseId String
+  targetSets Int    @default(3)
+  targetReps Int    @default(10)
+  sortOrder  Int    @default(0)
+
+  @@index([templateId])
+}
+
+model Workouts {
+  id          String  @id
+  date        String // YYYY-MM-DD
+  templateId  String?
+  name        String?
+  durationSec Int     @default(0)
+  notes       String?
+  completedAt String? // null = active/unfinished session
+  // v1.17 smart session: exercises deferred FROM this session (JSON array of
+  // exerciseIds) — shown with a "مؤجلة" badge; mirrored on the template's
+  // carryJson so the next session picks them up.
+  deferredJson String?
+  // v1.17: carry snapshot taken when the session started (template carry at
+  // that moment) — the session's planned rows put carried exercises first.
+  carryJson   String?
+  deletedAt   String?
+  createdAt   String
+  updatedAt   String
+
+  @@index([date])
+  @@index([completedAt])
+}
+
+model Sets {
+  id         String  @id
+  workoutId  String
+  exerciseId String
+  setType    String  @default("work") // warmup | work | failure
+  reps       Int     @default(0)
+  weight     Float   @default(0)
+  rpe        Float?
+  isPr       Boolean  @default(false)
+  createdAt  String
+  updatedAt  String
+
+  @@index([workoutId])
+  @@index([exerciseId, createdAt])
+}
+
+// ────────────────────── BODY MEASUREMENTS ─────────────────────
+
+model BodyMeasurements {
+  id          String  @id
+  date        String // YYYY-MM-DD
+  weight      Float?
+  bodyFatPct  Float?
+  muscleMass  Float?
+  water       Float? // percent
+  visceralFat Float?
+  notes       String?
+  createdAt   String
+  updatedAt   String
+
+  @@unique([date])
+}
+
+model BodyCircumferences {
+  id      String @id
+  date    String // YYYY-MM-DD
+  part    String // chest | waist | arm | thigh | hip
+  valueCm Float
+  updatedAt String
+
+  @@unique([date, part])
+}
+
+model ProgressPhotos {
+  id        String @id
+  date      String // YYYY-MM-DD
+  filePath  String // data URL in web build; app-private file path in native build
+  updatedAt String
+}
+
+// ───────────────────────── NUTRITION ──────────────────────────
+
+model Foods {
+  id       String  @id
+  nameAr   String
+  nameEn   String
+  brand    String?
+  barcode  String?
+  kcal     Float   // per 100g (or per serving if servingG null → per piece)
+  protein  Float
+  carbs    Float
+  fat      Float
+  servingG Float?  // when null: values are per typical piece/portion
+  custom   Boolean @default(false)
+  favorite Boolean @default(false)
+  // user-attached photo pair (canvas-compressed data URLs); list responses
+  // strip the full `image` and only carry the small `imageThumb`
+  image      String?
+  imageThumb String?
+  deletedAt String?
+  updatedAt String
+
+  @@index([barcode])
+}
+
+model FoodLogs {
+  id       String  @id
+  date     String // YYYY-MM-DD
+  mealType String  // breakfast | lunch | dinner | snack
+  foodId   String?
+  name     String
+  quantity Float   @default(1) // number of portions/pieces
+  grams    Float?  // optional eaten grams when food has servingG
+  kcal     Float
+  protein  Float
+  carbs    Float
+  fat      Float
+  updatedAt String
+
+  @@index([date])
+}
+
+model NutritionGoals {
+  id          String  @id
+  date        String  @default("1970-01-01") // single active row convention
+  kcal        Float
+  protein     Float
+  carbs       Float
+  fat         Float
+  // daily hydration target in millilitres (auto: weight×35ml + activity;
+  // manual overrides store the value itself) — 0 = no water goal yet
+  waterMl     Float   @default(0)
+  // JSON meta: { "formula":"mifflin", "sex":"male", "age":28, "heightCm":175, "weightKg":80, "activity":1.55, "goal":"cut"|"maintain"|"bulk", "manual": false }
+  // v2.4 water meta: { "waterAuto": true } | { "waterAuto": false } rides the same JSON
+  formulaMeta String?
+  updatedAt   String
+}
+
+model WaterLogs {
+  id       String  @id
+  date     String // YYYY-MM-DD
+  // water | juice | other — the drink category the user picked
+  drink    String  @default("water")
+  // display name ("ماء", "عصير برتقال", "شاي"…) — water logs stay lean,
+  // so this doubles as the row label in the hydration card
+  name     String
+  amountMl Float
+  updatedAt String
+
+  @@index([date])
+}
+
+// ───────────────────────── SETTINGS / SYSTEM ──────────────────────────
+
+model Settings {
+  key       String @id
+  value     String
+  updatedAt String
+}
+
+

@@ -1,0 +1,29 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ASTNUM Play Store icon (1024×1024) — foreground layer.
+       Use on the navy background layer below (same file = flattened icon).
+       Adaptive icon usage: split into ic_launcher foreground (this art within
+       the safe zone = inner 66%) + ic_launcher_background (#0b1020 flat). -->
+  <defs>
+    <linearGradient id="g" x1="300" y1="180" x2="760" y2="880" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.55" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#a3e635"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="#0b1020"/>
+  <g transform="translate(332,262) scale(5.1)">
+    <path d="M35 44 L52 12 L60 40 Z" fill="url(#g)"/>
+    <path d="M105 44 L88 12 L80 40 Z" fill="url(#g)"/>
+    <path d="M35 44 C35 40 38 37 42 37 L98 37 C102 37 105 40 105 44 L105 66 C105 84 92 96 77 101 L70 118 C69 121 66 123 63 123 C60 123 57 121 56 118 L49 101 C40 96 35 86 35 70 Z" fill="#0b1020" stroke="url(#g)" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M48 55 L58 51 L58 57 Z" fill="url(#g)"/>
+    <path d="M92 55 L82 51 L82 57 Z" fill="url(#g)"/>
+    <path d="M70 108 C54 97 46 87 46 78 C46 70 52 66 58 68 C62 69 66 73 70 77 C74 73 78 69 82 68 C88 66 94 70 94 78 C94 87 86 97 70 108 Z" fill="url(#g)"/>
+    <path d="M60 79 L67 87 L81 71" stroke="#0b1020" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <g stroke="url(#g)" stroke-width="3.2" stroke-linecap="round">
+      <path d="M22 96 L36 96"/><path d="M26 88 L26 104" stroke-width="6.4"/><path d="M34 91 L34 101" stroke-width="4.6"/>
+    </g>
+    <g stroke="url(#g)" stroke-width="3.2" stroke-linecap="round">
+      <path d="M118 96 L104 96"/><path d="M114 88 L114 104" stroke-width="6.4"/><path d="M106 91 L106 101" stroke-width="4.6"/>
+    </g>
+  </g>
+</svg>

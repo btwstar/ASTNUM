@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🌍 Improve a translation
+    url: https://github.com/btwstar/astnum/blob/main/CONTRIBUTING.md#working-on-translations
+    about: "Found a wrong or missing string in one of the 167 languages? See the translation guide"
+  - name: 📖 Documentation
+    url: https://github.com/btwstar/astnum/tree/main/docs
+    about: Manuals, privacy notes and the Android build pipeline

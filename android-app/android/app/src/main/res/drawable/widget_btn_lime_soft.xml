@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soft lime-tinted capture button (v2.3 quick-add) — theme-aware solid
+     tint, 14dp corners. Colored glyph on soft tint = the modern chip style. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="14dp" />
+    <solid android:color="@color/widget_lime_soft" />
+</shape>

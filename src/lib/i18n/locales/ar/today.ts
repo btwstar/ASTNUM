@@ -1,0 +1,57 @@
+const dict = {
+  "today.title": "اليوم",
+  "today.greeting.morning": "صباح الخير",
+  "today.greeting.afternoon": "مساء الخير",
+  "today.greeting.evening": "مساء الخير",
+  "today.greeting.night": "ساعة متأخرة…",
+
+  "today.habits.section": "عادات اليوم",
+  "today.habits.doneRatio": "{{done}} من {{total}}",
+  "today.habits.allDone": "أنجزت كل عادات اليوم",
+  "today.habits.empty": "لا توجد عادات بعد",
+  "today.habits.add": "إضافة عادة",
+  "today.habits.viewAll": "كل العادات",
+
+  "today.tasks.section": "مهام اليوم",
+  "today.tasks.viewAll": "كل المهام",
+  "today.tasks.empty": "لا مهام اليوم",
+  "today.tasks.add": "إضافة مهمة",
+  "today.tasks.doneCount_one": "أنجزت مهمة",
+  "today.tasks.doneCount_two": "أنجزت مهمتين",
+  "today.tasks.doneCount_few": "أنجزت {{count}} مهام",
+  "today.tasks.doneCount_many": "أنجزت {{count}} مهمة",
+  "today.tasks.doneCount_other": "أنجزت {{count}} مهمة",
+
+  "today.workout.section": "تمرين اليوم",
+  "today.workout.suggested": "المقترح",
+  "today.workout.start": "ابدأ التمرين",
+  "today.workout.resume": "استكمل الجلسة",
+  "today.workout.activeFor": "جلسة جارية منذ {{time}}",
+  "today.workout.restDay": "يوم راحة",
+  "today.workout.lastWas": "آخر جلسة: {{name}} • {{date}}",
+  "today.workout.volume": "حجم آخر ٧ أيام: {{volume}} كجم",
+
+  "today.nutrition.section": "الطاقة",
+  "today.nutrition.remaining": "متبقي {{kcal}} سعرة",
+  "today.nutrition.over": "تجاوزت الهدف بـ {{kcal}} سعرة",
+  "today.nutrition.noGoals": "حدد هدفك اليومي",
+  "today.nutrition.protein": "بروتين {{current}} / {{goal}} جم",
+  "today.nutrition.view": "سجل وجباتك",
+
+  "today.muscles.section": "العضلات — آخر ٧ أيام",
+  "today.muscles.top": "الأكثر تدريبًا: {{name}}",
+  "today.muscles.trainedCount_one": "درّبت عضلة",
+  "today.muscles.trainedCount_two": "درّبت عضلتين",
+  "today.muscles.trainedCount_few": "درّبت {{n}} عضلات",
+  "today.muscles.trainedCount_many": "درّبت {{n}} عضلة",
+  "today.muscles.trainedCount_other": "درّبت {{n}} عضلة",
+  "today.muscles.view": "الخريطة الحرارية",
+  "today.muscles.noData": "لا تدريب مسجل بعد",
+
+  "today.quick.addHabit": "عادة جديدة",
+  "today.quick.addNote": "ملاحظة سريعة",
+  "today.quick.startWorkout": "ابدأ تمرين",
+  "today.quick.logMeal": "سجّل وجبة",
+};
+
+export default dict;

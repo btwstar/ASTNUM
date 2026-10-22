@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Primary quick-action button: solid brand accent (theme-aware cyan),
+     10dp corners. Text ink = @color/widget_btn_text (white on cyan-600 in
+     light, navy on neon cyan in dark). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="10dp" />
+    <solid android:color="@color/widget_accent" />
+</shape>

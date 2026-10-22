@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tappable row feedback (theme-aware selectable ripple). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#1A22D3EE">
+    <item android:drawable="?android:attr/selectableItemBackground" />
+</ripple>

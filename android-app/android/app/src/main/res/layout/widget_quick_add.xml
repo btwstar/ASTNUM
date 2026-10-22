@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «إضافة سريعة» 2×1 (v2.3 redesign) — two soft-tinted capture buttons.
+     A tap opens the native QuickAdd DIALOG over the home screen; the typed
+     habit/note commits into the app's real database (live bridge when the
+     process is alive, headless same-origin bundle when dead) and every
+     home-screen widget refreshes immediately — the app itself never opens.
+     The dialog ALSO carries a habit⇄note segment, so the type can be
+     switched right there before saving. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="horizontal"
+    android:layoutDirection="locale"
+    android:gravity="center_vertical"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="9dp"
+    android:paddingBottom="9dp">
+
+    <!-- new habit — soft lime chip -->
+    <LinearLayout
+        android:id="@+id/qa_habit"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/widget_btn_lime_soft">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/widget_ic_plus"
+                android:contentDescription=""
+                android:tint="@color/widget_accent_lime" />
+            <TextView
+                android:id="@+id/qa_habit_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text=""
+                android:textColor="@color/widget_text_primary"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:ellipsize="end" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/qa_habit_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/widget_text_tertiary"
+            android:textSize="8sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- new note — soft violet chip -->
+    <LinearLayout
+        android:id="@+id/qa_note"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/widget_btn_violet_soft">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/widget_ic_plus"
+                android:contentDescription=""
+                android:tint="@color/widget_violet" />
+            <TextView
+                android:id="@+id/qa_note_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text=""
+                android:textColor="@color/widget_text_primary"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:ellipsize="end" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/qa_note_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/widget_text_tertiary"
+            android:textSize="8sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+</LinearLayout>

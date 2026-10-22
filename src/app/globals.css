@@ -1,0 +1,541 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ══════════════════════════════════════════════════════════════
+   ASTNUM DESIGN SYSTEM — see /DESIGN.md
+   Identity: deep navy surfaces + neon cyan→mint gradient accent
+   ══════════════════════════════════════════════════════════════ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-grad-from: var(--grad-from);
+  --color-grad-to: var(--grad-to);
+  --color-surface-3: var(--surface-3);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-heat-0: var(--heat-0);
+  --color-heat-1: var(--heat-1);
+  --color-heat-2: var(--heat-2);
+  --color-heat-3: var(--heat-3);
+  --color-heat-4: var(--heat-4);
+  --font-sans: var(--font-app), ui-sans-serif, system-ui, sans-serif;
+  /* Broad script fallbacks — browsers/Android WebView resolve per glyph,
+     covering the 167-language registry (CJK, Indic, Thai, Hebrew, Tifinagh…). */
+  --font-scripts: "Noto Sans", "Noto Sans Arabic", "Noto Sans Hebrew",
+    "Noto Sans CJK SC", "Noto Sans CJK TC", "Noto Sans Devanagari",
+    "Noto Sans Thai", "Noto Sans Bengali", "Noto Sans Tamil",
+    "Noto Sans Georgian", "Noto Sans Armenian", "Noto Sans Ethiopic",
+    "Noto Sans Khmer", "Noto Sans Lao", "Noto Sans Myanmar",
+    "Noto Sans Sinhala", "Noto Sans Kannada", "Noto Sans Telugu",
+    "Noto Sans Malayalam", "Noto Sans Gujarati", "Noto Sans Gurmukhi",
+    "Noto Sans Thaana", "Noto Sans Myanmar", "Noto Sans Tifinagh",
+    "Noto Sans Coptic", "Noto Sans Tibetan", "Noto Sans Mongolian", sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --radius-3xl: calc(var(--radius) + 18px);
+}
+
+/* ── DARK THEME (default) ─────────────────────────────────── */
+:root,
+.dark {
+  --radius: 1rem;
+
+  --background: oklch(0.145 0.028 258);
+  --foreground: oklch(0.95 0.012 235);
+  --card: oklch(0.185 0.03 256);
+  --card-foreground: oklch(0.95 0.012 235);
+  --popover: oklch(0.21 0.032 256);
+  --popover-foreground: oklch(0.95 0.012 235);
+  --secondary: oklch(0.24 0.032 254);
+  --secondary-foreground: oklch(0.95 0.012 235);
+  --muted: oklch(0.24 0.03 254);
+  --muted-foreground: oklch(0.66 0.02 240);
+  --accent: oklch(0.26 0.033 252);
+  --accent-foreground: oklch(0.95 0.012 235);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 13%);
+  --ring: oklch(0.83 0.14 172 / 55%);
+  --surface-3: oklch(0.27 0.033 250);
+
+  /* Neon accent (default "mint" theme) */
+  --primary: oklch(0.84 0.155 168);
+  --primary-foreground: oklch(0.15 0.03 258);
+  --grad-from: oklch(0.82 0.135 195);
+  --grad-to: oklch(0.85 0.18 128);
+
+  /* Semantic */
+  --success: oklch(0.8 0.16 152);
+  --warning: oklch(0.83 0.15 80);
+  --danger: oklch(0.7 0.19 20);
+  --info: oklch(0.76 0.12 232);
+
+  --chart-1: oklch(0.84 0.155 168);
+  --chart-2: oklch(0.82 0.135 195);
+  --chart-3: oklch(0.8 0.16 152);
+  --chart-4: oklch(0.83 0.15 80);
+  --chart-5: oklch(0.7 0.19 20);
+
+  /* Muscle heat scale — v1.13 brand-harmonized (navy → cyan → mint → amber → red);
+     level-0 sits a shade lighter than the figure body so every muscle READS
+     on the statue, and the cyan/mint levels echo the neon brand gradient */
+  --heat-0: oklch(0.37 0.045 250);
+  --heat-1: oklch(0.75 0.125 200);
+  --heat-2: oklch(0.8 0.16 155);
+  --heat-3: oklch(0.83 0.145 75);
+  --heat-4: oklch(0.65 0.21 27);
+
+  --shadow-color: 258 60% 3%;
+}
+
+/* ── LIGHT THEME ─────────────────────────────────────────── */
+.light {
+  --background: oklch(0.975 0.006 240);
+  --foreground: oklch(0.22 0.03 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.03 255);
+  --secondary: oklch(0.95 0.008 240);
+  --secondary-foreground: oklch(0.22 0.03 255);
+  --muted: oklch(0.945 0.008 240);
+  --muted-foreground: oklch(0.48 0.02 250);
+  --accent: oklch(0.93 0.012 235);
+  --accent-foreground: oklch(0.22 0.03 255);
+  --border: oklch(0.22 0.03 255 / 10%);
+  --input: oklch(0.22 0.03 255 / 14%);
+  --ring: oklch(0.62 0.12 170 / 45%);
+  --surface-3: oklch(0.92 0.012 235);
+
+  --primary: oklch(0.62 0.125 172);
+  --primary-foreground: oklch(0.99 0.005 240);
+  --grad-from: oklch(0.66 0.13 200);
+  --grad-to: oklch(0.72 0.16 135);
+
+  --success: oklch(0.62 0.14 155);
+  --warning: oklch(0.68 0.14 75);
+  --danger: oklch(0.58 0.19 20);
+  --info: oklch(0.6 0.12 235);
+
+  --chart-1: oklch(0.62 0.125 172);
+  --chart-2: oklch(0.66 0.13 200);
+  --chart-3: oklch(0.62 0.14 155);
+  --chart-4: oklch(0.68 0.14 75);
+  --chart-5: oklch(0.58 0.19 20);
+
+  /* Muscle heat scale — v1.13: darker + saturated so plates read on the
+     light figure body and keep AA contrast for the legend text beside them */
+  --heat-0: oklch(0.86 0.025 245);
+  --heat-1: oklch(0.72 0.11 205);
+  --heat-2: oklch(0.66 0.14 152);
+  --heat-3: oklch(0.76 0.135 75);
+  --heat-4: oklch(0.56 0.19 26);
+}
+
+/* ── ACCENT THEMES (data-accent on <html>) — all unlocked, the app is 100% free ── */
+[data-accent="amber"] {
+  --primary: oklch(0.85 0.16 75);
+  --grad-from: oklch(0.88 0.15 60);
+  --grad-to: oklch(0.8 0.17 105);
+  --ring: oklch(0.85 0.16 75 / 55%);
+  --chart-1: oklch(0.85 0.16 75);
+  --chart-2: oklch(0.88 0.15 60);
+  --chart-3: oklch(0.8 0.17 105);
+}
+.light[data-accent="amber"] {
+  --primary: oklch(0.66 0.14 70);
+  --primary-foreground: oklch(0.15 0.03 80);
+  --grad-from: oklch(0.7 0.13 55);
+  --grad-to: oklch(0.68 0.15 100);
+}
+
+[data-accent="rose"] {
+  --primary: oklch(0.74 0.19 352);
+  --grad-from: oklch(0.78 0.17 335);
+  --grad-to: oklch(0.72 0.2 15);
+  --ring: oklch(0.74 0.19 352 / 55%);
+  --chart-1: oklch(0.74 0.19 352);
+  --chart-2: oklch(0.78 0.17 335);
+  --chart-3: oklch(0.72 0.2 15);
+}
+.light[data-accent="rose"] {
+  --primary: oklch(0.6 0.19 352);
+  --grad-from: oklch(0.64 0.17 335);
+  --grad-to: oklch(0.58 0.2 15);
+}
+
+[data-accent="violet"] {
+  --primary: oklch(0.72 0.19 295);
+  --grad-from: oklch(0.75 0.18 285);
+  --grad-to: oklch(0.7 0.2 310);
+  --ring: oklch(0.72 0.19 295 / 55%);
+  --chart-1: oklch(0.72 0.19 295);
+  --chart-2: oklch(0.75 0.18 285);
+  --chart-3: oklch(0.7 0.2 310);
+}
+.light[data-accent="violet"] {
+  --primary: oklch(0.56 0.19 295);
+  --grad-from: oklch(0.6 0.18 285);
+  --grad-to: oklch(0.55 0.2 310);
+}
+
+/* ── CUSTOM ACCENT (any color picked by the user — unlimited) ──
+   The full OKLCH palette is derived in JS from the user's hex
+   (src/lib/theme/custom-color.ts — HSL/hex picker → OKLCH with per-mode
+   legibility mapping) and injected as inline custom properties on <html>
+   by AccentSync (providers.tsx). This block only maps them onto the theme
+   tokens via plain var() substitution (no calc() inside color functions) —
+   works in every engine that supports custom properties + oklch.
+   Fallbacks = the default mint theme (same first-paint as v1.4). */
+[data-accent="custom"] {
+  --primary: var(--custom-primary, oklch(0.84 0.155 168));
+  --primary-foreground: var(--custom-primary-fg, oklch(0.15 0.03 258));
+  --grad-from: var(--custom-grad-from, oklch(0.82 0.135 195));
+  --grad-to: var(--custom-grad-to, oklch(0.85 0.18 128));
+  --ring: var(--custom-ring, oklch(0.84 0.155 168 / 55%));
+  --chart-1: var(--custom-primary, oklch(0.84 0.155 168));
+  --chart-2: var(--custom-grad-from, oklch(0.82 0.135 195));
+  --chart-3: var(--custom-grad-to, oklch(0.85 0.18 128));
+}
+.light[data-accent="custom"] {
+  --primary: var(--custom-primary-light, oklch(0.62 0.125 168));
+  --primary-foreground: var(--custom-primary-fg-light, oklch(0.99 0.005 240));
+  --grad-from: var(--custom-grad-from-light, oklch(0.66 0.13 200));
+  --grad-to: var(--custom-grad-to-light, oklch(0.72 0.16 135));
+}
+
+/* ── RAINBOW RGB ACCENT — the whole app slowly cycles every hue ──
+   Registered custom properties make the hues INTERPOLATABLE: one keyframe
+   animation on <html> drives primary + both gradient stops in lockstep
+   (they keep the brand's +27/−38 hue-offset geometry while rotating), and
+   because every theme token reads them via plain var(), all existing
+   surfaces — buttons, FAB, logo gradient, charts, rings — recolor with
+   ZERO component changes. Lightness/chroma are mode-fixed, so text
+   contrast stays constant across the entire wheel.
+   initial-values = the static fallback (reduced motion, or engines without
+   @property): the classic mint-cyan duotone. */
+@property --rb-h {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 168;
+}
+@property --rb-h-from {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 195;
+}
+@property --rb-h-to {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 130;
+}
+
+@keyframes rainbow-hue-cycle {
+  from {
+    --rb-h: 168;
+    --rb-h-from: 195;
+    --rb-h-to: 130;
+  }
+  to {
+    --rb-h: 528;
+    --rb-h-from: 555;
+    --rb-h-to: 490;
+  }
+}
+
+[data-accent="rainbow"] {
+  --primary: oklch(0.76 0.17 var(--rb-h));
+  --primary-foreground: oklch(0.15 0.03 258);
+  --grad-from: oklch(0.74 0.16 var(--rb-h-from));
+  --grad-to: oklch(0.77 0.18 var(--rb-h-to));
+  --ring: oklch(0.76 0.17 var(--rb-h) / 55%);
+  --chart-1: oklch(0.76 0.17 var(--rb-h));
+  --chart-2: oklch(0.74 0.16 var(--rb-h-from));
+  --chart-3: oklch(0.77 0.18 var(--rb-h-to));
+  animation: rainbow-hue-cycle 14s linear infinite;
+}
+
+.light[data-accent="rainbow"] {
+  --primary: oklch(0.58 0.18 var(--rb-h));
+  --primary-foreground: oklch(0.99 0.005 240);
+  --grad-from: oklch(0.63 0.17 var(--rb-h-from));
+  --grad-to: oklch(0.69 0.16 var(--rb-h-to));
+  --ring: oklch(0.58 0.18 var(--rb-h) / 45%);
+}
+
+/* Users who disable animations keep a calm static duotone (the registered
+   initial-values above) instead of a cycling wheel. */
+@media (prefers-reduced-motion: reduce) {
+  [data-accent="rainbow"] {
+    animation: none;
+  }
+}
+
+/* Settings chip: the rainbow wheel slowly spins — it advertises the accent. */
+.rb-wheel {
+  animation: rb-wheel-spin 14s linear infinite;
+}
+@keyframes rb-wheel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── BASE ─────────────────────────────────────────────────── */
+/* Wrapped in @layer base (the shadcn v4 canonical pattern): unlayered
+   styles would OUTRANK every utility in @layer utilities (CSS cascade
+   layers beat specificity), silently suppressing all intentional
+   border-<color> utilities app-wide — e.g. the active accent chip's
+   border-primary never rendered. Inside the base layer the rule still
+   provides the default border color but utilities correctly win. */
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-feature-settings: "ss01" on;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+
+/* Font switching: every script is served — Latin/Arabic embedded webfonts
+   lead; anything else falls through the per-glyph Noto/system stack. */
+html[dir="rtl"] body {
+  font-family: var(--font-arabic), var(--font-scripts), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0;
+}
+html[dir="ltr"] body {
+  font-family: var(--font-latin), var(--font-scripts), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.011em;
+}
+
+/* Tabular figures for stats/weights/counts */
+.tnum,
+table,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" on;
+}
+
+/* ── Utilities ─────────────────────────────────────────────── */
+@utility text-gradient {
+  background-image: linear-gradient(135deg, var(--grad-from), var(--grad-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-accent {
+  background-image: linear-gradient(135deg, var(--grad-from), var(--grad-to));
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Slim styled scrollbars for long lists */
+.slim-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--foreground) 18%, transparent) transparent;
+}
+.slim-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--foreground) 15%, transparent);
+  border-radius: 999px;
+}
+
+/* Card hairline top-highlight (premium surface detail) */
+.card-hi {
+  position: relative;
+  overflow: hidden;
+}
+.card-hi::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 12%), transparent);
+  pointer-events: none;
+}
+
+/* Directional icons auto-flip */
+.dir-flip {
+  html[dir="rtl"] & {
+    transform: scaleX(-1);
+  }
+}
+
+/* ── Custom color picker: hue dial (settings → appearance) ──
+   Native range input rendered over a rainbow guide div: the native
+   track is fully transparent, only a fat themed thumb shows. */
+.hue-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-x;
+}
+.hue-slider:focus-visible {
+  outline: none;
+}
+.hue-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 45%, transparent);
+}
+.hue-slider::-webkit-slider-runnable-track {
+  height: 100%;
+  background: transparent;
+  border: none;
+}
+.hue-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: var(--primary);
+  border: 3px solid oklch(0.99 0.005 240);
+  box-shadow: 0 2px 10px oklch(0 0 0 / 45%);
+  margin-top: 0;
+}
+.hue-slider::-moz-range-track {
+  height: 100%;
+  background: transparent;
+  border: none;
+}
+.hue-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: var(--primary);
+  border: 3px solid oklch(0.99 0.005 240);
+  box-shadow: 0 2px 10px oklch(0 0 0 / 45%);
+}
+
+/* ── Custom color picker: RGB channel sliders (settings → appearance) ──
+   Same pattern as the hue dial: the native track is fully transparent over
+   a per-channel gradient guide div; a compact thumb rides on top. The thumb
+   fill comes from the inline --rgb-thumb custom property (the exact picked
+   color, set per-slider in the component). */
+.rgb-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-x;
+}
+.rgb-slider:focus-visible {
+  outline: none;
+}
+.rgb-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 45%, transparent);
+}
+.rgb-slider::-webkit-slider-runnable-track {
+  height: 100%;
+  background: transparent;
+  border: none;
+}
+.rgb-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: var(--rgb-thumb, oklch(0.99 0.005 240));
+  border: 2px solid oklch(0.99 0.005 240);
+  box-shadow: 0 1px 6px oklch(0 0 0 / 45%);
+  margin-top: 0;
+}
+.rgb-slider::-moz-range-track {
+  height: 100%;
+  background: transparent;
+  border: none;
+}
+.rgb-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--rgb-thumb, oklch(0.99 0.005 240));
+  border: 2px solid oklch(0.99 0.005 240);
+  box-shadow: 0 1px 6px oklch(0 0 0 / 45%);
+}
+
+/* Reduced motion — respect system setting globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in oklch, var(--primary) 30%, transparent);
+}
+
+/* Muscle-map figure body surface (theme-aware, clearly readable statue) */
+:root,
+.dark {
+  --figure-body: oklch(0.315 0.038 252);
+  /* seam crease tone — dark enough to carve anatomy out of ANY plate fill,
+     including the near-surface level-0 heat color (six-pack, quad grooves) */
+  --figure-seam: oklch(0.185 0.02 255);
+}
+.light {
+  --figure-body: oklch(0.845 0.012 240);
+  --figure-seam: oklch(0.68 0.02 245);
+}
+
+/* Safe-area helpers (native webview / PWA) */
+.ps-safe {
+  padding-inline: max(1rem, env(safe-area-inset-left));
+}
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+

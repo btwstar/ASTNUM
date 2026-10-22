@@ -1,0 +1,44 @@
+<svg width="1024" height="500" viewBox="0 0 1024 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0d1226"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="360" y1="120" x2="700" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.55" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#a3e635"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a3e635" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#a3e635" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="500" fill="url(#bg)"/>
+  <ellipse cx="180" cy="120" rx="300" ry="300" fill="url(#glow1)"/>
+  <ellipse cx="900" cy="420" rx="280" ry="280" fill="url(#glow2)"/>
+  <g transform="translate(620,80) scale(2.55)">
+    <path d="M35 44 L52 12 L60 40 Z" fill="url(#accent)"/>
+    <path d="M105 44 L88 12 L80 40 Z" fill="url(#accent)"/>
+    <path d="M35 44 C35 40 38 37 42 37 L98 37 C102 37 105 40 105 44 L105 66 C105 84 92 96 77 101 L70 118 C69 121 66 123 63 123 C60 123 57 121 56 118 L49 101 C40 96 35 86 35 70 Z" fill="#0b1020" stroke="url(#accent)" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M48 55 L58 51 L58 57 Z" fill="url(#accent)"/>
+    <path d="M92 55 L82 51 L82 57 Z" fill="url(#accent)"/>
+    <path d="M70 108 C54 97 46 87 46 78 C46 70 52 66 58 68 C62 69 66 73 70 77 C74 73 78 69 82 68 C88 66 94 70 94 78 C94 87 86 97 70 108 Z" fill="url(#accent)"/>
+    <path d="M60 79 L67 87 L81 71" stroke="#0b1020" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <g stroke="url(#accent)" stroke-width="3.2" stroke-linecap="round">
+      <path d="M22 96 L36 96"/><path d="M26 88 L26 104" stroke-width="6.4"/><path d="M34 91 L34 101" stroke-width="4.6"/>
+    </g>
+    <g stroke="url(#accent)" stroke-width="3.2" stroke-linecap="round">
+      <path d="M118 96 L104 96"/><path d="M114 88 L114 104" stroke-width="6.4"/><path d="M106 91 L106 101" stroke-width="4.6"/>
+    </g>
+  </g>
+  <text x="70" y="225" font-family="'IBM Plex Sans Arabic','Inter',system-ui,sans-serif" font-size="96" font-weight="700" fill="#ffffff">ASTNUM</text>
+  <text x="74" y="290" font-family="'IBM Plex Sans Arabic','Inter',system-ui,sans-serif" font-size="34" font-weight="500" fill="#22d3ee">عاداتك</text>
+  <text x="176" y="290" font-family="'IBM Plex Sans Arabic','Inter',system-ui,sans-serif" font-size="34" font-weight="500" fill="#2dd4bf">ملاحظاتك</text>
+  <text x="290" y="290" font-family="'IBM Plex Sans Arabic','Inter',system-ui,sans-serif" font-size="34" font-weight="500" fill="#a3e635">تمارينك</text>
+  <text x="74" y="345" font-family="'IBM Plex Sans Arabic','Inter',system-ui,sans-serif" font-size="22" font-weight="400" fill="#94a3b8">Habits + Notes + Gym — all in one, offline-first.</text>
+</svg>

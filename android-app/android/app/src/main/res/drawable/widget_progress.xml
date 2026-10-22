@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Thin theme-aware progress bar: neutral track + the brand cyan→lime fill
+     (accent pair resolves per dark/light via values/values-night). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="2.5dp" />
+            <solid android:color="@color/widget_track" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip
+            android:clipOrientation="horizontal"
+            android:gravity="start">
+            <shape android:shape="rectangle">
+                <corners android:radius="2.5dp" />
+                <gradient
+                    android:angle="0"
+                    android:startColor="@color/widget_accent"
+                    android:endColor="@color/widget_accent_lime"
+                    android:type="linear" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

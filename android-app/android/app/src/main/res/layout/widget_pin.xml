@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «عنصر مثبّت» 2×2 — ONE chosen item (habit / workout session / note)
+     shown permanently, configured per widget instance. Unconfigured → the
+     tap-to-choose placeholder. The sliders glyph re-opens the picker; the
+     bottom action button logs a habit / starts the session with one tap.
+
+     RemoteViews discipline (v2.3 hard rule): ONLY allowlisted classes —
+     LinearLayout / TextView / ImageView / ProgressBar. No <Space>, no plain
+     <View>: they are outside the AppWidget allowlist and make the launcher
+     render its "Can't load widget" error card (the v1.21/v1.22 bug). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
+
+    <!-- header: type chip + re-configure -->
+    <LinearLayout
+        android:id="@+id/pin_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/widget_pill">
+            <ImageView
+                android:id="@+id/pin_type_icon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/widget_ic_repeat"
+                android:contentDescription=""
+                android:tint="@color/widget_accent" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/pin_type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/widget_chip"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text=""
+            android:textColor="@color/widget_text_secondary"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+        <!-- flexible spacer — allowlisted LinearLayout (NOT <Space>) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/pin_gear"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/widget_ic_gear"
+            android:contentDescription=""
+            android:tint="@color/widget_text_tertiary" />
+    </LinearLayout>
+
+    <!-- the pinned item -->
+    <TextView
+        android:id="@+id/pin_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text=""
+        android:textColor="@color/widget_text_primary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="2"
+        android:ellipsize="end" />
+    <TextView
+        android:id="@+id/pin_line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=""
+        android:textColor="@color/widget_text_secondary"
+        android:textSize="11sp"
+        android:maxLines="2"
+        android:ellipsize="end" />
+    <TextView
+        android:id="@+id/pin_line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text=""
+        android:textColor="@color/widget_text_tertiary"
+        android:textSize="9sp"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+    <!-- flexible spacer — allowlisted LinearLayout (NOT a plain <View>) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- one-tap action (habit: log now / session: start) -->
+    <TextView
+        android:id="@+id/pin_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/widget_btn"
+        android:gravity="center"
+        android:paddingTop="9dp"
+        android:paddingBottom="9dp"
+        android:text=""
+        android:textColor="@color/widget_btn_text"
+        android:textSize="11.5sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:visibility="gone" />
+
+    <!-- unconfigured placeholder -->
+    <LinearLayout
+        android:id="@+id/pin_empty_block"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/widget_pill_soft">
+            <ImageView
+                android:id="@+id/pin_empty_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/widget_ic_plus"
+                android:contentDescription=""
+                android:tint="@color/widget_accent" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/pin_empty_cta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/widget_text_primary"
+            android:textSize="12.5sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="2"
+            android:ellipsize="end" />
+        <TextView
+            android:id="@+id/pin_empty_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/widget_text_tertiary"
+            android:textSize="9.5sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+</LinearLayout>

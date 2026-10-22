@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ASTNUM</string>
+    <string name="title_activity_main">ASTNUM</string>
+    <string name="package_name">app.astnum.mobile</string>
+    <string name="custom_url_scheme">app.astnum.mobile</string>
+
+    <!-- Home-screen widgets (labels in the launcher widget picker, EN locale) -->
+    <string name="widget_calories_name">ASTNUM — Calories</string>
+    <string name="widget_calories_desc">Calorie progress ring with the percentage</string>
+    <string name="widget_carb_name">ASTNUM — Carbs</string>
+    <string name="widget_carb_desc">Carb progress ring with the percentage</string>
+    <string name="widget_protein_name">ASTNUM — Protein</string>
+    <string name="widget_protein_desc">Protein progress ring with the percentage</string>
+    <string name="widget_fat_name">ASTNUM — Fat</string>
+    <string name="widget_fat_desc">Fat progress ring with the percentage</string>
+    <string name="widget_water_name">ASTNUM — Water</string>
+    <string name="widget_water_desc">Water progress ring with the percentage</string>
+    <string name="widget_meals_name">ASTNUM — Meals</string>
+    <string name="widget_meals_desc">The four meals with kcal, details and completion</string>
+    <string name="widget_tasks_name">ASTNUM — Tasks</string>
+    <string name="widget_tasks_desc">Today\'s task list with their state</string>
+    <string name="widget_taskflip_name">ASTNUM — Task of the day</string>
+    <string name="widget_taskflip_desc">A small square — tap to flip through your tasks</string>
+    <string name="widget_habits_name">ASTNUM — Habits</string>
+    <string name="widget_habits_desc">Your habits on the widget — log with one tap</string>
+    <string name="widget_habitflip_name">ASTNUM — Habit of the day</string>
+    <string name="widget_habitflip_desc">A small square — tap to flip through your habits</string>
+    <string name="widget_muscles_name">ASTNUM — Muscle heat</string>
+    <string name="widget_muscles_desc">Your body heat map exactly like the app</string>
+    <string name="widget_sessions_name">ASTNUM — Workout sessions</string>
+    <string name="widget_sessions_desc">Your plans by their assigned days — start with a tap</string>
+    <string name="widget_active_name">ASTNUM — Active session</string>
+    <string name="widget_active_desc">Live timer, current exercise and one-tap set logging</string>
+    <string name="widget_percent_name">ASTNUM — Today\'s ratios</string>
+    <string name="widget_percent_desc">Every percentage in one list</string>
+    <string name="widget_quickadd_name">ASTNUM — Quick add</string>
+    <string name="widget_quickadd_desc">Start a new habit or note with one tap</string>
+    <string name="widget_drinks_name">ASTNUM — Drinks</string>
+    <string name="widget_drinks_desc">Add water, juice or any drink with one tap</string>
+    <string name="widget_pin_name">ASTNUM — Pinned item</string>
+    <string name="widget_pin_desc">Permanently show one habit, session or note you pick</string>
+    <string name="widget_events_name">ASTNUM — Upcoming events</string>
+    <string name="widget_events_desc">What\'s ahead this week — sessions and tasks with their days</string>
+    <string name="widget_calendar_name">ASTNUM — Month calendar</string>
+    <string name="widget_calendar_desc">Your month at a glance — tap a day for its tasks and notes</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ASTNUM widget theme — DARK launcher surfaces.
+     Per spec: the widget CARD is PURE BLACK (#000000) with near-white ink;
+     the brand neon accents stay (they were born for black). Auto-switched
+     from values/colors.xml by the launcher's dark-mode resource overlay. -->
+<resources>
+    <!-- surfaces (pure black identity) -->
+    <color name="widget_surface">#000000</color>
+    <color name="widget_surface_alt">#1A1A1F</color>
+    <color name="widget_stroke">#26262C</color>
+    <color name="widget_track">#232329</color>
+    <color name="widget_chip_surface">#1A1A1F</color>
+    <color name="widget_empty_surface">#0D0D10</color>
+
+    <!-- ink -->
+    <color name="widget_text_primary">#FFFFFF</color>
+    <color name="widget_text_secondary">#A6A6B0</color>
+    <color name="widget_text_tertiary">#71717C</color>
+    <color name="widget_check_muted">#4C5980</color>
+
+    <!-- accents (the brand neon set) -->
+    <color name="widget_accent">#22D3EE</color>
+    <color name="widget_accent_lime">#A3E635</color>
+    <color name="widget_amber">#FFB86B</color>
+    <color name="widget_rose">#FB7185</color>
+    <color name="widget_violet">#A78BFA</color>
+    <color name="widget_done">#34D399</color>
+
+    <!-- buttons (solid = neon cyan + navy ink; ghost = neon cyan stroke) -->
+    <color name="widget_ghost">#22D3EE</color>
+    <color name="widget_btn_text">#062033</color>
+
+    <!-- soft icon-chip tints (v2.3 quick-add / pin / calendar accents) -->
+    <color name="widget_accent_soft">#0D2B34</color>
+    <color name="widget_lime_soft">#1B2A0D</color>
+    <color name="widget_violet_soft">#211A3A</color>
+    <color name="widget_rose_soft">#33161E</color>
+</resources>

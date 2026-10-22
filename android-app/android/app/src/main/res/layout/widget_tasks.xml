@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «مهام اليوم» 2×2 — up to 5 pending tasks with check state. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/widget_ic_tasks"
+            android:contentDescription=""
+            android:tint="@color/widget_accent" />
+        <TextView
+            android:id="@+id/task_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text=""
+            android:textColor="@color/widget_text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+        <TextView
+            android:id="@+id/task_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/widget_text_tertiary"
+            android:textSize="9sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/task_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text=""
+        android:textColor="@color/widget_text_secondary"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/task_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/widget_text_secondary"
+        android:textSize="11sp"
+        android:visibility="gone" />
+    <LinearLayout android:id="@+id/task_row_1"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/task_check_1"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/task_title_1"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/task_row_2"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/task_check_2"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/task_title_2"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/task_row_3"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/task_check_3"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/task_title_3"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/task_row_4"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/task_check_4"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/task_title_4"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/task_row_5"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/task_check_5"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/task_title_5"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+</LinearLayout>

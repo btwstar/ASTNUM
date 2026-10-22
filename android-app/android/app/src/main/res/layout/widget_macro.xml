@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1×1 macro ring (calories / carb / protein / fat — one shared layout).
+     The ring bitmap (track + accent arc + tinted glyph) is painted by
+     WidgetRender.ringBitmap; the percentage sits under it. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:gravity="center_horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="6dp"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp">
+
+    <ImageView
+        android:id="@+id/macro_ring"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription=""
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/macro_pct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=""
+        android:textColor="@color/widget_text_primary"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+    <TextView
+        android:id="@+id/macro_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text=""
+        android:textColor="@color/widget_text_secondary"
+        android:textSize="9sp"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+    <TextView
+        android:id="@+id/macro_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text=""
+        android:textColor="@color/widget_text_tertiary"
+        android:textSize="8sp"
+        android:maxLines="1"
+        android:ellipsize="end" />
+</LinearLayout>

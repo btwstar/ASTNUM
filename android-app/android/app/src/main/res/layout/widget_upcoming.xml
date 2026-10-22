@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «الأحداث القادمة» 2×2 (v2.3) — the next ≤4 things ahead: scheduled
+     workout sessions + dated pending tasks, each row opening its home in
+     the app. All strings arrive pre-formatted in the app's language via
+     the snapshot's t/events sections. RemoteViews-safe classes only. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="10dp">
+
+    <!-- header -->
+    <LinearLayout
+        android:id="@+id/ev_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/widget_pill">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/widget_ic_calendar"
+                android:contentDescription=""
+                android:tint="@color/widget_accent" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/ev_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text=""
+            android:textColor="@color/widget_text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- empty hint -->
+    <TextView
+        android:id="@+id/ev_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/widget_text_secondary"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+    <!-- event rows -->
+    <LinearLayout android:id="@+id/ev_row_1"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="9dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/ev_icon_1"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_dumbbell" android:contentDescription="" />
+        <TextView android:id="@+id/ev_when_1"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/widget_chip"
+            android:paddingStart="6dp" android:paddingEnd="6dp"
+            android:paddingTop="2dp" android:paddingBottom="2dp"
+            android:text="" android:textColor="@color/widget_text_secondary"
+            android:textSize="8.5sp" android:textStyle="bold" android:maxLines="1" />
+        <TextView android:id="@+id/ev_name_1"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="7dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/ev_row_2"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="9dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/ev_icon_2"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_dumbbell" android:contentDescription="" />
+        <TextView android:id="@+id/ev_when_2"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/widget_chip"
+            android:paddingStart="6dp" android:paddingEnd="6dp"
+            android:paddingTop="2dp" android:paddingBottom="2dp"
+            android:text="" android:textColor="@color/widget_text_secondary"
+            android:textSize="8.5sp" android:textStyle="bold" android:maxLines="1" />
+        <TextView android:id="@+id/ev_name_2"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="7dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/ev_row_3"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="9dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/ev_icon_3"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_dumbbell" android:contentDescription="" />
+        <TextView android:id="@+id/ev_when_3"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/widget_chip"
+            android:paddingStart="6dp" android:paddingEnd="6dp"
+            android:paddingTop="2dp" android:paddingBottom="2dp"
+            android:text="" android:textColor="@color/widget_text_secondary"
+            android:textSize="8.5sp" android:textStyle="bold" android:maxLines="1" />
+        <TextView android:id="@+id/ev_name_3"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="7dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/ev_row_4"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="9dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/ev_icon_4"
+            android:layout_width="13dp" android:layout_height="13dp"
+            android:src="@drawable/widget_ic_dumbbell" android:contentDescription="" />
+        <TextView android:id="@+id/ev_when_4"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/widget_chip"
+            android:paddingStart="6dp" android:paddingEnd="6dp"
+            android:paddingTop="2dp" android:paddingBottom="2dp"
+            android:text="" android:textColor="@color/widget_text_secondary"
+            android:textSize="8.5sp" android:textStyle="bold" android:maxLines="1" />
+        <TextView android:id="@+id/ev_name_4"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="7dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- flexible spacer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

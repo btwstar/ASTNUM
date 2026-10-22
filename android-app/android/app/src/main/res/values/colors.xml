@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ASTNUM widget theme — LIGHT launcher surfaces.
+     Per spec: the widget CARD is PURE WHITE (#FFFFFF) with near-black ink;
+     accents are darkened 600-step hues so every glyph/stroke keeps ≥3:1
+     contrast on white. Auto-switched by values-night (→ PURE BLACK). -->
+<resources>
+    <!-- surfaces (pure white identity) -->
+    <color name="widget_surface">#FFFFFF</color>
+    <color name="widget_surface_alt">#F5F5F7</color>
+    <color name="widget_stroke">#E5E5EA</color>
+    <color name="widget_track">#E6E6EB</color>
+    <color name="widget_chip_surface">#F5F5F7</color>
+    <color name="widget_empty_surface">#FAFAFB</color>
+
+    <!-- ink -->
+    <color name="widget_text_primary">#000000</color>
+    <color name="widget_text_secondary">#54545C</color>
+    <color name="widget_text_tertiary">#8A8A93</color>
+    <color name="widget_check_muted">#A6A6AF</color>
+
+    <!-- accents (600-step — readable on pure white) -->
+    <color name="widget_accent">#0891B2</color>
+    <color name="widget_accent_lime">#65A30D</color>
+    <color name="widget_amber">#D97706</color>
+    <color name="widget_rose">#E11D48</color>
+    <color name="widget_violet">#7C3AED</color>
+    <color name="widget_done">#059669</color>
+
+    <!-- buttons (solid = accent cyan-600 + white ink; ghost = accent stroke) -->
+    <color name="widget_ghost">#0891B2</color>
+    <color name="widget_btn_text">#FFFFFF</color>
+
+    <!-- soft icon-chip tints (v2.3 quick-add / pin / calendar accents) -->
+    <color name="widget_accent_soft">#E0F2F8</color>
+    <color name="widget_lime_soft">#ECF6E2</color>
+    <color name="widget_violet_soft">#EFE9FC</color>
+    <color name="widget_rose_soft">#FCE9EC</color>
+</resources>

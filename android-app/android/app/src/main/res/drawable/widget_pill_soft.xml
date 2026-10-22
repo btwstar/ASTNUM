@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soft accent-tinted rounded square — icon chip on placeholders / quick
+     buttons. Solid theme-aware tint (values/values-night) — never alpha, so
+     launchers that dim widget surfaces can't double-darken it. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="16dp" />
+    <solid android:color="@color/widget_accent_soft" />
+</shape>

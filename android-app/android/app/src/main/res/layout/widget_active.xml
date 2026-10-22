@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «الجلسة الجارية» 4×2 — live Chronometer + current exercise + sets +
+     volume + quick-action buttons (broadcast → plugin / deep-link fallback). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="8dp">
+
+    <!-- header: title + live timer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/widget_ic_timer"
+            android:contentDescription=""
+            android:tint="@color/widget_accent_lime" />
+        <TextView
+            android:id="@+id/act_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text=""
+            android:textColor="@color/widget_text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+        <Chronometer
+            android:id="@+id/act_chrono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/widget_accent_lime"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+
+    <!-- empty / no-session block -->
+    <LinearLayout android:id="@+id/act_empty_block"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:visibility="gone">
+        <TextView android:id="@+id/act_body"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:gravity="center"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="13sp" android:textStyle="bold" />
+        <TextView android:id="@+id/act_hint"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:gravity="center"
+            android:text="" android:textColor="@color/widget_text_secondary"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- live session block -->
+    <LinearLayout android:id="@+id/act_exercise_block"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView android:id="@+id/act_name"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="" android:textColor="@color/widget_text_tertiary"
+            android:textSize="10sp" android:maxLines="1" android:ellipsize="end" />
+        <TextView android:id="@+id/act_exercise"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="16sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" />
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="3dp" android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView android:id="@+id/act_sets"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" android:textColor="@color/widget_text_secondary"
+                android:textSize="11sp" android:textStyle="bold" android:maxLines="1" />
+            <TextView android:id="@+id/act_volume"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="" android:textColor="@color/widget_text_tertiary"
+                android:textSize="10sp" />
+        </LinearLayout>
+        <TextView android:id="@+id/act_next"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="" android:textColor="@color/widget_text_tertiary"
+            android:textSize="10sp" android:maxLines="1" android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- quick-action buttons (the widget-side input) -->
+    <LinearLayout android:id="@+id/act_buttons"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView android:id="@+id/act_log_set"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/widget_btn"
+            android:gravity="center"
+            android:paddingTop="7dp" android:paddingBottom="7dp"
+            android:text="" android:textColor="@color/widget_btn_text"
+            android:textSize="12sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:maxLines="1" />
+        <TextView android:id="@+id/act_next_ex"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/widget_btn_ghost"
+            android:gravity="center"
+            android:paddingTop="7dp" android:paddingBottom="7dp"
+            android:text="" android:textColor="@color/widget_ghost"
+            android:textSize="12sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:maxLines="1" />
+    </LinearLayout>
+</LinearLayout>

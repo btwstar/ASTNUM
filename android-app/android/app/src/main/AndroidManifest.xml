@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation"
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:launchMode="singleTask"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Home-screen widget taps: astnum://open?tab=…&toggle=…&start=…
+                 (singleTask → warm taps arrive via onNewIntent → deepLink event;
+                  cold taps carry the URI on the launch intent → getLaunchUrl). -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="astnum" />
+            </intent-filter>
+        </activity>
+
+        <!-- «إضافة سريعة» capture dialog (v1.22): a quick-add widget tap opens
+             this floating dialog OVER the home screen — the typed habit/note
+             is committed without ever opening the app (live bridge when the
+             process is alive, headless same-origin bundle when it is dead).
+             exported=false: it is only ever launched by our own widget
+             PendingIntents, which carry the app's identity. -->
+        <activity
+            android:name=".widget.QuickAddActivity"
+            android:theme="@style/Theme.Astnum.QuickAdd"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- ── Home-screen widgets v2 (19) ──────────────────────────────
+             Receivers render from the SharedPreferences snapshot the web
+             app pushes through the AstnumWidgets plugin. exported=false is
+             the Android Studio convention: APPWIDGET_UPDATE is delivered by
+             the system; custom actions come only from our own PendingIntents. -->
+
+        <!-- 1×1 macro rings -->
+        <receiver
+            android:name=".widget.CaloriesWidget"
+            android:exported="false"
+            android:label="@string/widget_calories_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_calories_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.CarbWidget"
+            android:exported="false"
+            android:label="@string/widget_carb_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_carb_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.ProteinWidget"
+            android:exported="false"
+            android:label="@string/widget_protein_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_protein_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.FatWidget"
+            android:exported="false"
+            android:label="@string/widget_fat_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_fat_info" />
+        </receiver>
+        <!-- v2.4: the 1×1 hydration ring (same shared widget_macro layout) -->
+        <receiver
+            android:name=".widget.WaterWidget"
+            android:exported="false"
+            android:label="@string/widget_water_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_water_info" />
+        </receiver>
+
+        <!-- meals list -->
+        <receiver
+            android:name=".widget.MealsWidget"
+            android:exported="false"
+            android:label="@string/widget_meals_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_meals_info" />
+        </receiver>
+
+        <!-- tasks list + flip square -->
+        <receiver
+            android:name=".widget.TasksWidget"
+            android:exported="false"
+            android:label="@string/widget_tasks_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_tasks_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.TaskFlipWidget"
+            android:exported="false"
+            android:label="@string/widget_taskflip_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="app.astnum.mobile.action.FLIP_TASK" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_taskflip_info" />
+        </receiver>
+
+        <!-- habits list + flip square -->
+        <receiver
+            android:name=".widget.HabitsWidget"
+            android:exported="false"
+            android:label="@string/widget_habits_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_habits_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.HabitFlipWidget"
+            android:exported="false"
+            android:label="@string/widget_habitflip_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="app.astnum.mobile.action.FLIP_HABIT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_habitflip_info" />
+        </receiver>
+
+        <!-- muscle heat map -->
+        <receiver
+            android:name=".widget.MusclesWidget"
+            android:exported="false"
+            android:label="@string/widget_muscles_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_muscles_info" />
+        </receiver>
+
+        <!-- scheduled sessions -->
+        <receiver
+            android:name=".widget.SessionsWidget"
+            android:exported="false"
+            android:label="@string/widget_sessions_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_sessions_info" />
+        </receiver>
+
+        <!-- live session + quick actions -->
+        <receiver
+            android:name=".widget.ActiveWidget"
+            android:exported="false"
+            android:label="@string/widget_active_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="app.astnum.mobile.action.QUICK_LOG" />
+                <action android:name="app.astnum.mobile.action.QUICK_NEXT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_active_info" />
+        </receiver>
+
+        <!-- all ratios -->
+        <receiver
+            android:name=".widget.PercentWidget"
+            android:exported="false"
+            android:label="@string/widget_percent_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_percent_info" />
+        </receiver>
+
+        <!-- quick capture: new habit / new note -->
+        <receiver
+            android:name=".widget.QuickAddWidget"
+            android:exported="false"
+            android:label="@string/widget_quickadd_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_quickadd_info" />
+        </receiver>
+
+        <!-- v2.4: one-tap water / juice / other drink logging (2×1) -->
+        <receiver
+            android:name=".widget.DrinksWidget"
+            android:exported="false"
+            android:label="@string/widget_drinks_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_drinks_info" />
+        </receiver>
+
+        <!-- ONE permanently pinned item (habit / session / note), per instance -->
+        <receiver
+            android:name=".widget.PinWidget"
+            android:exported="false"
+            android:label="@string/widget_pin_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_pin_info" />
+        </receiver>
+
+        <!-- v2.3: the next ≤4 things ahead (sessions + dated tasks) -->
+        <receiver
+            android:name=".widget.UpcomingWidget"
+            android:exported="false"
+            android:label="@string/widget_events_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_events_info" />
+        </receiver>
+
+        <!-- v2.3: the current month like the stock Android calendar -->
+        <receiver
+            android:name=".widget.CalendarWidget"
+            android:exported="false"
+            android:label="@string/widget_calendar_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_calendar_info" />
+        </receiver>
+    </application>
+
+    <!-- Permissions -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

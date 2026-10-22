@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «عادات اليوم» 2×2 — 4 scheduled habits, one-tap logging per row. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="8dp">
+
+    <LinearLayout android:id="@+id/hab_header"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/widget_ic_flame"
+            android:contentDescription=""
+            android:tint="@color/widget_accent" />
+        <TextView android:id="@+id/hab_title"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="6dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="13sp" android:textStyle="bold" android:fontFamily="sans-serif-medium" />
+        <TextView android:id="@+id/hab_count"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:background="@drawable/widget_chip"
+            android:paddingStart="7dp" android:paddingEnd="7dp"
+            android:paddingTop="2dp" android:paddingBottom="2dp"
+            android:text="" android:textColor="@color/widget_text_secondary"
+            android:textSize="9sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <ProgressBar android:id="@+id/hab_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent" android:layout_height="3dp"
+        android:layout_marginTop="6dp"
+        android:progressDrawable="@drawable/widget_progress"
+        android:max="100" android:progress="0" />
+
+    <TextView android:id="@+id/hab_empty"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" android:gravity="center"
+        android:text="" android:textColor="@color/widget_text_secondary"
+        android:textSize="11sp" android:visibility="gone" />
+    <LinearLayout android:id="@+id/hab_row_1"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="7dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/hab_check_1"
+            android:layout_width="14dp" android:layout_height="14dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/hab_name_1"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+        <TextView android:id="@+id/hab_streak_1"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="" android:textColor="@color/widget_text_tertiary"
+            android:textSize="9sp" android:textStyle="bold" android:visibility="gone" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/hab_row_2"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="7dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/hab_check_2"
+            android:layout_width="14dp" android:layout_height="14dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/hab_name_2"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+        <TextView android:id="@+id/hab_streak_2"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="" android:textColor="@color/widget_text_tertiary"
+            android:textSize="9sp" android:textStyle="bold" android:visibility="gone" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/hab_row_3"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="7dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/hab_check_3"
+            android:layout_width="14dp" android:layout_height="14dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/hab_name_3"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+        <TextView android:id="@+id/hab_streak_3"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="" android:textColor="@color/widget_text_tertiary"
+            android:textSize="9sp" android:textStyle="bold" android:visibility="gone" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/hab_row_4"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="7dp" android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView android:id="@+id/hab_check_4"
+            android:layout_width="14dp" android:layout_height="14dp"
+            android:src="@drawable/widget_ic_check" android:contentDescription="" />
+        <TextView android:id="@+id/hab_name_4"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="8dp"
+            android:text="" android:textColor="@color/widget_text_primary"
+            android:textSize="11sp" android:maxLines="1" android:ellipsize="end" />
+        <TextView android:id="@+id/hab_streak_4"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="" android:textColor="@color/widget_text_tertiary"
+            android:textSize="9sp" android:textStyle="bold" android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

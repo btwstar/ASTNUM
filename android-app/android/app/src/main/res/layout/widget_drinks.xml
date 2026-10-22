@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «المشروبات» 2×1 (v2.4) — hydration quick-add: a glass chip header with
+     today's ml progress + THREE one-tap columns (water / juice / other) that
+     open the native QuickAdd DIALOG in its water mode over the home screen;
+     the card itself deep-links into the food screen. All strings arrive
+     pre-formatted in the app's language (water + quickAdd sections).
+     RemoteViews-safe classes only (v2.3 rule): LinearLayout / TextView /
+     ImageView / ProgressBar. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="9dp"
+    android:paddingBottom="9dp">
+
+    <!-- header: glass chip + today's total (or the goal-reached line) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/widget_pill_soft">
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/widget_ic_glass"
+                android:contentDescription=""
+                android:tint="@color/widget_accent" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/drinks_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="7dp"
+            android:text=""
+            android:textColor="@color/widget_text_primary"
+            android:textSize="12.5sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:singleLine="true"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- hydration progress (0..goal ml) -->
+    <ProgressBar
+        android:id="@+id/drinks_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="6dp"
+        android:progressDrawable="@drawable/widget_progress"
+        android:max="100"
+        android:progress="0" />
+
+    <!-- three side-by-side one-tap columns -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <!-- water -->
+        <LinearLayout
+            android:id="@+id/drinks_water"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground">
+            <ImageView
+                android:id="@+id/drinks_water_icon"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/widget_ic_glass"
+                android:contentDescription=""
+                android:tint="@color/widget_accent" />
+            <TextView
+                android:id="@+id/drinks_water_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text=""
+                android:textColor="@color/widget_text_primary"
+                android:textSize="10.5sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:ellipsize="end" />
+            <TextView
+                android:id="@+id/drinks_water_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text=""
+                android:textColor="@color/widget_text_tertiary"
+                android:textSize="9sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <!-- juice -->
+        <LinearLayout
+            android:id="@+id/drinks_juice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground">
+            <ImageView
+                android:id="@+id/drinks_juice_icon"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/widget_ic_glass"
+                android:contentDescription=""
+                android:tint="@color/widget_amber" />
+            <TextView
+                android:id="@+id/drinks_juice_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text=""
+                android:textColor="@color/widget_text_primary"
+                android:textSize="10.5sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:ellipsize="end" />
+            <TextView
+                android:id="@+id/drinks_juice_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text=""
+                android:textColor="@color/widget_text_tertiary"
+                android:textSize="9sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <!-- other drinks -->
+        <LinearLayout
+            android:id="@+id/drinks_other"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground">
+            <ImageView
+                android:id="@+id/drinks_other_icon"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/widget_ic_glass"
+                android:contentDescription=""
+                android:tint="@color/widget_violet" />
+            <TextView
+                android:id="@+id/drinks_other_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text=""
+                android:textColor="@color/widget_text_primary"
+                android:textSize="10.5sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:ellipsize="end" />
+            <TextView
+                android:id="@+id/drinks_other_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text=""
+                android:textColor="@color/widget_text_tertiary"
+                android:textSize="9sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
